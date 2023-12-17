@@ -1,3 +1,7 @@
+using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using Range = Microsoft.Office.Interop.Excel.Range;
+
 namespace ExcelMergeSelectedRows
 {
     public partial class Form1 : Form
@@ -9,15 +13,22 @@ namespace ExcelMergeSelectedRows
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openfileDialog1 = new OpenFileDialog();
-            if (openfileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                this.button1.Text = openfileDialog1.FileName;
-                String filename = DialogResult.ToString();
+            
+            Stream streamCsv = null;
 
-                var excelApp = new Microsoft.Office.Interop.Excel.Application();
-                excelApp.Visible = true;
-                excelApp.Workbooks.Open(button1.Text);
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.Title = "Wybierz Plik";
+            openFileDialog1.Filter = "CSV files *.csv|*csv";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+
+                Form2 window2 = new Form2();
+                window2.FileName = openFileDialog1.FileName;
+                window2.Show();
+
+                
             }
         }
     }

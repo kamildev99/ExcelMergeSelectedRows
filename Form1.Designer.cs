@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            openFileDialog1 = new OpenFileDialog();
             SuspendLayout();
             // 
             // button1
@@ -40,6 +41,10 @@
             button1.Text = "Otwóz plik";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -55,5 +60,6 @@
         #endregion
 
         private Button button1;
+        private OpenFileDialog openFileDialog1;
     }
 }
