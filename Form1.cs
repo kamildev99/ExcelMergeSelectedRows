@@ -13,7 +13,7 @@ namespace ExcelMergeSelectedRows
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             Stream streamCsv = null;
 
             openFileDialog1.InitialDirectory = @"C:\";
@@ -28,7 +28,7 @@ namespace ExcelMergeSelectedRows
                 window2.FileName = openFileDialog1.FileName;
                 window2.Show();
 
-                
+
             }
         }
     }

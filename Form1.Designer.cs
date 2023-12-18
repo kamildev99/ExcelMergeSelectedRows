@@ -34,7 +34,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(385, 296);
+            button1.Location = new Point(120, 134);
             button1.Name = "button1";
             button1.Size = new Size(100, 43);
             button1.TabIndex = 0;
@@ -50,10 +50,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(350, 283);
             Controls.Add(button1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "MergeExcel";
             ResumeLayout(false);
         }
 

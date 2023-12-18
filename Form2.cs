@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Range = Microsoft.Office.Interop.Excel.Range;
+using Label = System.Windows.Forms.Label;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace ExcelMergeSelectedRows
 {
@@ -32,8 +34,36 @@ namespace ExcelMergeSelectedRows
 
                 var reader = new StreamReader(File.OpenRead(FileName));
                 var lineFirst = reader.ReadLine();
+
+
+                //first line which is not null
+                while (lineFirst == null)
+                { 
+                    lineFirst = reader.ReadLine();
+                }
+
+                char delimiter = CsvSeperatorDetector.DetectSeparator(FileName);
+
+                //labels
+                //textboxes
+                List<TextBox> textBoxes = new List<TextBox>();
+               
+                int top = 20;
+                //handle this, can be null values
+                foreach (string value in lineFirst.Split(delimiter))
+                {
+                     
+                    Label labelTmp = new Label();
+                    labelTmp.Text = value;
+                    labelTmp.Location = new System.Drawing.Point(50, top);        
+                    this.Controls.Add(labelTmp);
+                    top = top + 30;
+                }
+
+                
+
                 List<String> valuesLineFirst = lineFirst.Split(CsvSeperatorDetector.DetectSeparator(FileName)).ToList();
-                this.textBox1.Text += String.Join(",", valuesLineFirst.ToArray())+"\n \n \n new line \n \n ";
+                this.textBox1.Text += String.Join(",", valuesLineFirst.ToArray()) + "\n \n \n new line \n \n ";
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
@@ -41,14 +71,15 @@ namespace ExcelMergeSelectedRows
 
 
                     this.textBox1.Text += line.ToString() + "\n";
-                    
+
+
                 }
-                
-                this.textBox1.Text += "\n\n\n Speparator to: "; 
+
+                this.textBox1.Text += "\n\n\n Speparator to: ";
                 this.textBox1.Text += "\n\n\n" + CsvSeperatorDetector.DetectSeparator(FileName);
 
 
-                MessageBox.Show("Udało się jestem w form2 !!! i przekazana wartość: " + FileName);
+                //MessageBox.Show("Udało się jestem w form2 !!! i przekazana wartość: " + FileName);
             }
             catch (Exception ex)
             {

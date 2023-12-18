@@ -38,6 +38,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(358, 321);
             textBox1.TabIndex = 0;
+            textBox1.Visible = false;
             // 
             // Form2
             // 
