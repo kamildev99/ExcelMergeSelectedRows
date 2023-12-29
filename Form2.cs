@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Range = Microsoft.Office.Interop.Excel.Range;
 using Label = System.Windows.Forms.Label;
 using TextBox = System.Windows.Forms.TextBox;
+using CheckBox = System.Windows.Forms.CheckBox;
 
 namespace ExcelMergeSelectedRows
 {
@@ -47,7 +48,8 @@ namespace ExcelMergeSelectedRows
                 //labels
                 //textboxes
                 List<TextBox> textBoxes = new List<TextBox>();
-               
+                List<Tuple<Label, CheckBox>> tupleControls = new List<Tuple<Label, CheckBox>>();
+
                 int top = 20;
                 //handle this, can be null values
                 foreach (string value in lineFirst.Split(delimiter))
@@ -55,8 +57,19 @@ namespace ExcelMergeSelectedRows
                      
                     Label labelTmp = new Label();
                     labelTmp.Text = value;
-                    labelTmp.Location = new System.Drawing.Point(50, top);        
+                    labelTmp.Location = new System.Drawing.Point(50, top);
+
+                    CheckBox checkBoxTmp = new CheckBox();
+                    checkBoxTmp.Text = "Scal";
+                    checkBoxTmp.Location = new System.Drawing.Point(300, top);
+
+
+                    tupleControls.Add(new Tuple<Label,CheckBox>(labelTmp, checkBoxTmp));
+                    // tupleControls.Add() = LabelTmp;
+                   // tupleControls.Item2 = checkBoxTmp;
+
                     this.Controls.Add(labelTmp);
+                    this.Controls.Add(checkBoxTmp);
                     top = top + 30;
                 }
 
@@ -77,7 +90,7 @@ namespace ExcelMergeSelectedRows
 
                 this.textBox1.Text += "\n\n\n Speparator to: ";
                 this.textBox1.Text += "\n\n\n" + CsvSeperatorDetector.DetectSeparator(FileName);
-
+                this.textBox1.Text += "\n TRZECIA LINIA WIWDWDWD" + tupleControls.ElementAt(0).Item2.Text;
 
                 //MessageBox.Show("Udało się jestem w form2 !!! i przekazana wartość: " + FileName);
             }
@@ -87,5 +100,7 @@ namespace ExcelMergeSelectedRows
                 this.Close();
             }
         }
+
+        
     }
 }
