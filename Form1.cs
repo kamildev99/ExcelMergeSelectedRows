@@ -14,7 +14,7 @@ namespace ExcelMergeSelectedRows
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Stream streamCsv = null;
+           // Stream streamCsv = null;
 
             openFileDialog1.InitialDirectory = @"C:\";
             openFileDialog1.RestoreDirectory = true;
